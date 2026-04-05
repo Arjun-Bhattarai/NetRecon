@@ -38,4 +38,3 @@ It helps you discover devices connected to your network, scan ports, and analyze
 Download and install Nmap from:
 https://nmap.org/download.html
 
-### 2. Install Python dependency
