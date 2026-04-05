@@ -4,7 +4,7 @@ scanner = nmap.PortScanner()
 
 target_ip = "192.168.1.0/24"#yo chai idconfig bata ip lenu parxa jaslai WIFI scan garna chinxa 
 
-scanner.scan(hosts=target_ip, arguments='-sn')
+scanner.scan(hosts=target_ip, arguments='-sn -PR')
 
 for host in scanner.all_hosts():
     print("\n" + "="*40)
