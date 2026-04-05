@@ -15,12 +15,11 @@ It helps you discover devices connected to your network, scan ports, and analyze
 
 ## ✨ Features
 
-- 🔍 Scan entire network (e.g., 192.168.1.0/24)
+- 🔍 Scan entire network (e.g., 192.--.--.-)
 - 📡 Detect active devices
 - 🔌 Identify open ports and services
 - 🖥️ Basic OS detection
 - ⚡ Fast and efficient scanning
-- 🧠 Beginner-friendly
 
 ---
 
