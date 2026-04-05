@@ -1,26 +1,37 @@
 import nmap
 
+target_ip = "192.168.1.68"
+
+print(f"[*] Scanning {target_ip}...")
+
 scanner = nmap.PortScanner()
 
-target_ip = "192.168.1.84"
+try:
+    # Use TCP connect scan (no admin needed)
+    scanner.scan(hosts=target_ip, arguments='-sT -p 1-100')
+except Exception as e:
+    print(f"[!] Error: {e}")
+    input("Press Enter to exit...")
+    exit()
 
-scanner.scan(hosts=target_ip, arguments='-sS -sV -O -p 1-1000')
+if not scanner.all_hosts():
+    print("[!] No hosts found.")
+    input("Press Enter to exit...")
+    exit()
 
 for host in scanner.all_hosts():
-    print(f"\nHost: {host}")
+    print("\n" + "="*40)
+    print(f"Host: {host}")
     print(f"State: {scanner[host].state()}")
-
-    if 'osmatch' in scanner[host]:
-        for os in scanner[host]['osmatch']:
-            print(f"OS: {os['name']} (Accuracy: {os['accuracy']}%)")
+    print("="*40)
 
     for proto in scanner[host].all_protocols():
         print(f"\nProtocol: {proto}")
-        ports = scanner[host][proto].keys()
+        ports = scanner[host][proto]
 
         for port in sorted(ports):
-            state = scanner[host][proto][port]['state']
-            service = scanner[host][proto][port]['name']
-            product = scanner[host][proto][port].get('product', '')
+            state = ports[port]['state']
+            service = ports[port]['name']
+            print(f"Port {port}: {state} ({service})")
 
-            print(f"Port: {port} | State: {state} | Service: {service} {product}")
+print("\n[*] Done")
