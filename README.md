@@ -31,9 +31,4 @@ It helps you discover devices connected to your network, scan ports, and analyze
 
 ---
 
-## ⚙️ Installation
-
-### 1. Install Nmap
-Download and install Nmap from:
-https://nmap.org/download.html
 
