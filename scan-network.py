@@ -1,23 +1,21 @@
-import nmap, requests
+import nmap
+import requests
 
 scanner = nmap.PortScanner()
-
-target_ip = "192.168.1.0/24"  # yo chai idconfig bata ip lenu parxa jaslai WIFI scan garna chinxa
-
+network = "192.168.1.0/24"
 
 def get_vendor(mac):
     try:
-        url = f"https://api.macvendors.com/{mac}"# yo chai mac address ko vendor information linxa
+        url = f"https://api.macvendors.com/{mac}"
         response = requests.get(url, timeout=3)
-        if response.status_code == 200:
-            return response.text
-        else:
-            return "Unknown"
+        return response.text if response.status_code == 200 else "Unknown"
     except:
         return "Unknown"
 
+# Only ping scan (no ports)
+scanner.scan(hosts=network, arguments="-sn -PR")
 
-scanner.scan(hosts=target_ip, arguments="-sn -PR")# -sn le ping scan garxa, -PR le ARP request pathaunxa local network ma
+print("\n===== Devices on Network =====")
 
 for host in scanner.all_hosts():
     print("\n" + "=" * 40)
@@ -27,9 +25,12 @@ for host in scanner.all_hosts():
     hostname = scanner[host].hostname()
     print(f"Hostname: {hostname if hostname else 'Unknown'}")
 
-    if "addresses" in scanner[host]:
-        if "mac" in scanner[host]["addresses"]:
-            mac = scanner[host]["addresses"]["mac"]
-            print(f"MAC: {mac}")
-            vendor = get_vendor(mac)
-            print(f"Vendor: {vendor}")
+    mac = "Unknown"
+    vendor = "Unknown"
+
+    if "addresses" in scanner[host] and "mac" in scanner[host]["addresses"]:
+        mac = scanner[host]["addresses"]["mac"]
+        vendor = get_vendor(mac)
+
+    print(f"MAC: {mac}")
+    print(f"Vendor: {vendor}")

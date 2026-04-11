@@ -1,37 +1,28 @@
-import nmap
+import socket
 
-target_ip = "192.168.1.68"
+target_ip = input("Enter target IP: ")
 
-print(f"[*] Scanning {target_ip}...")
+def scan_ports(ip):
+    open_ports = []
 
-scanner = nmap.PortScanner()
+    for port in [21, 22, 23, 80, 443]:
+        s = socket.socket()
+        s.settimeout(0.5)
 
-try:
-    # Use TCP connect scan (no admin needed)
-    scanner.scan(hosts=target_ip, arguments='-sT -p 1-100')
-except Exception as e:
-    print(f"[!] Error: {e}")
-    input("Press Enter to exit...")
-    exit()
+        if s.connect_ex((ip, port)) == 0:
+            open_ports.append(port)
 
-if not scanner.all_hosts():
-    print("[!] No hosts found.")
-    input("Press Enter to exit...")
-    exit()
+        s.close()
 
-for host in scanner.all_hosts():
-    print("\n" + "="*40)
-    print(f"Host: {host}")
-    print(f"State: {scanner[host].state()}")
-    print("="*40)
 
-    for proto in scanner[host].all_protocols():
-        print(f"\nProtocol: {proto}")
-        ports = scanner[host][proto]
+    return open_ports
 
-        for port in sorted(ports):
-            state = ports[port]['state']
-            service = ports[port]['name']
-            print(f"Port {port}: {state} ({service})")
+ports = scan_ports(target_ip)
 
-print("\n[*] Done")
+print("\n===== Port Scan Result =====")
+print(f"Target: {target_ip}")
+
+if ports:
+    print(f"Open Ports: {ports}")
+else:
+    print("No open ports found")
