@@ -1,25 +1,26 @@
-
-A Python-based network scanner to detect devices, ports, and potential security threats on local networks.
 # 🛡️ NetRecon
 
-> A Python-based network reconnaissance tool to detect devices, scan ports, and identify potential security threats on local networks.
+> A Python-based network reconnaissance and security analysis tool to discover devices, scan ports, classify systems, and identify potential risks on local networks.
 
 ---
 
 ## 🚀 Overview
 
-NetRecon is a lightweight yet powerful network scanning tool built with Python and Nmap.  
-It helps you discover devices connected to your network, scan ports, and analyze services running on those devices.
+**NetRecon** is a lightweight yet powerful network scanning tool built using Python and Nmap.  
+It helps users explore their local network by discovering connected devices, identifying open ports, classifying device types, and analyzing potential security risks.
+
+Designed for learning, cybersecurity practice, and basic network auditing.
 
 ---
 
 ## ✨ Features
 
-- 🔍 Scan entire network (e.g., 192.--.--.-)
-- 📡 Detect active devices
-- 🔌 Identify open ports and services
-- 🖥️ Basic OS detection
-- ⚡ Fast and efficient scanning
+- 🔍 Scan entire local network (e.g., 192.168.1.0/24)
+- 📡 Detect active devices with IP, MAC, and vendor info
+- 🔌 Identify open ports on individual devices
+- 🧠 Classify devices (Router, PC, IP Camera, IoT, etc.)
+- ⚠️ Basic risk analysis based on exposed services
+- ⚡ Fast and efficient scanning using sockets + Nmap
 
 ---
 
@@ -27,8 +28,8 @@ It helps you discover devices connected to your network, scan ports, and analyze
 
 - Python 🐍  
 - python-nmap  
-- Nmap (core engine)
+- socket (for port scanning)  
+- Nmap (core scanning engine)  
 
 ---
-
 
