@@ -6,7 +6,7 @@
 
 ## 🚀 Overview
 
-**NetRecon** is a lightweight yet powerful network scanning tool built using Python and Nmap.  
+**NetRecon** is a lightweight yet powerful network scanning tool built using Python & Nmap.  
 It helps users explore their local network by discovering connected devices, identifying open ports, classifying device types, and analyzing potential security risks.
 
 Designed for learning, cybersecurity practice, and basic network auditing.
