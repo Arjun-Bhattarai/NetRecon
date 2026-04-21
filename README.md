@@ -6,30 +6,55 @@
 
 ## 🚀 Overview
 
-**NetRecon** is a lightweight yet powerful network scanning tool built using Python & Nmap.  
+**NetRecon** is a lightweight yet powerful network scanning and analysis tool built using **Python + Nmap + FastAPI**.  
 It helps users explore their local network by discovering connected devices, identifying open ports, classifying device types, and analyzing potential security risks.
 
-Designed for learning, cybersecurity practice, and basic network auditing.
+The project is designed for **cybersecurity learning, network auditing, and hackathon-level demonstrations**.
 
 ---
 
 ## ✨ Features
 
-- 🔍 Scan entire local network (e.g., 192.168.1.0/24)
-- 📡 Detect active devices with IP, MAC, and vendor info
+- 🔍 Scan entire local network (e.g., `192.168.1.0/24`)
+- 📡 Detect active devices with IP, MAC address, and vendor details
 - 🔌 Identify open ports on individual devices
-- 🧠 Classify devices (Router, PC, IP Camera, IoT, etc.)
-- ⚠️ Basic risk analysis based on exposed services
-- ⚡ Fast and efficient scanning using sockets + Nmap
+- 🧠 Smart device classification (Router, PC, IP Camera, IoT, etc.)
+- ⚠️ Risk analysis based on exposed services (SSH, SMB, RDP, etc.)
+- 🌐 REST API backend using FastAPI
+- 🖥️ Simple web-based frontend dashboard
+
+---
+
+## 🏗️ Architecture
+
+- **Core/** → Scanning & security logic  
+- **FastAPI backend** → API layer (`/scan`, `/scan-network`)  
+- **Frontend (HTML/JS)** → UI dashboard  
+- **Nmap + Socket** → Network discovery engine  
 
 ---
 
 ## 🛠️ Tech Stack
 
 - Python 🐍  
+- FastAPI ⚡  
 - python-nmap  
-- socket (for port scanning)  
-- Nmap (core scanning engine)  
+- socket (low-level port scanning)  
+- Nmap (network discovery engine)  
+- HTML, JavaScript (frontend UI)  
 
 ---
 
+## 🎯 Purpose
+
+- Learn real-world networking & cybersecurity concepts  
+- Practice port scanning and service detection  
+- Understand device fingerprinting  
+- Build SOC-style monitoring logic  
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is intended for **educational and authorized network testing only**.  
+Do not use it on networks you do not own or have permission to scan.
