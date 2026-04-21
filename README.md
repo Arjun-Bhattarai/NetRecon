@@ -38,7 +38,6 @@ The project is designed for **cybersecurity learning, network auditing, and hack
 
 - Python 🐍  
 - FastAPI ⚡  
-- python-nmap  
 - socket (low-level port scanning)  
 - Nmap (network discovery engine)  
 - HTML, JavaScript (frontend UI)  
