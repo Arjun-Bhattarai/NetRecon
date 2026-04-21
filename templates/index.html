@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NetInspector</title>
+</head>
+
+<body>
+
+<h1>📡 NetInspector</h1>
+
+<input type="text" id="ip" placeholder="Enter IP">
+
+<button onclick="scanDevice()">Scan Device</button>
+<button onclick="scanNetwork()">Scan Network</button>
+
+<pre id="result"></pre>
+
+<script>
+const API_BASE = "http://127.0.0.1:8000";
+
+async function scanDevice() {
+    let ip = document.getElementById("ip").value;
+
+    let res = await fetch(`${API_BASE}/scan`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ ip })
+    }); //single device scan ko api call garako xa
+
+    let data = await res.json();
+
+    document.getElementById("result").innerText =
+        JSON.stringify(data, null, 2);
+}
+
+
+async function scanNetwork() {
+    document.getElementById("result").innerText = "Scanning network...";
+
+    let res = await fetch(`${API_BASE}/scan-network`, {
+        method: "POST"
+    }); //network scan ko api call garako xa
+
+    let data = await res.json();
+
+    let html = "<h3>Devices Found</h3>";
+
+    data.devices.forEach(d => {
+        html += `
+            <div style="margin:10px;padding:10px;border:1px solid #ccc;">
+                <p><b>IP:</b> ${d.ip}</p>
+                <p><b>State:</b> ${d.state}</p>
+                <p><b>MAC:</b> ${d.mac}</p>
+                <p><b>Vendor:</b> ${d.vendor}</p>
+            </div>
+        `;
+    });
+
+    document.getElementById("result").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
