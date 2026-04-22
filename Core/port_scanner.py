@@ -7,7 +7,7 @@ def scan_ports(ip):
 
     for port in common_ports:
         try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s: # yesla socket create garxa for IPv4 and TCP
                 s.settimeout(0.5)
 
                 if s.connect_ex((ip, port)) == 0:
