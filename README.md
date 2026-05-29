@@ -50,10 +50,10 @@ The project is designed for **cybersecurity learning, network auditing, and hack
 - Practice port scanning and service detection  
 - Understand device fingerprinting  
 - Build SOC-style monitoring logic  
-
+ 
 ---
 
 ## ⚠️ Disclaimer
 
 This tool is intended for **educational and authorized network testing only**.  
-Do not use it on networks you do not own or have permission to scan.
+Do not use it on networks you do not own or have permission to scan!
