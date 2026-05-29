@@ -44,6 +44,7 @@ async function scanNetwork() {
     let data = await res.json();
 
     let html = "<h3>Devices Found</h3>";
+    
 
     data.devices.forEach(d => {
         html += `
