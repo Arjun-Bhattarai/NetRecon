@@ -52,6 +52,22 @@ The project is designed for **cybersecurity learning, network auditing, and hack
 - Build SOC-style monitoring logic  
  
 ---
+## 🤖 MCP Integration
+
+Accessible to MCP-compatible AI assistants (Cursor, Claude Desktop, Windsurf, Cline, VS Code) via
+[GitMCP](https://gitmcp.io/Arjun-Bhattarai/NetRecon).
+
+### Configuration
+
+```json
+  {
+  "Servers": {
+    "NetRecon Docs": {
+      "url": "https://gitmcp.io/Arjun-Bhattarai/NetRecon"
+    }
+  }
+}
+```
 
 ## ⚠️ Disclaimer
 
